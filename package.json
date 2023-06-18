@@ -1,0 +1,18 @@
+{
+  "name": "api-node2",
+  "version": "1.0.0",
+  "description": "Praticando o desenvolvimento de API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "author": "Flávio Augusto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
