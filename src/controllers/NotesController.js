@@ -31,7 +31,7 @@ class NotesController {
     await knex('tags').insert(insertTags)
 
 
-    response.json()
+    return response.json()
   }
 
   async show(request, response) {
@@ -81,7 +81,18 @@ class NotesController {
         .whereLike('title', `%${title}%`)
         .orderBy('title')
     }
-    return response.json(notes)
+
+    const userTags = await knex('tags').where({ user_id })
+
+    const notesWithTags = notes.map(note => {
+      const noteTag = userTags.filter(tag => tag.note_id == note_id)
+      return {
+        ...note,
+        tags: noteTag
+      }
+    })
+
+    return response.json(notesWithTags)
   }
 
 }
