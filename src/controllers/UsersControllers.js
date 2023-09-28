@@ -24,6 +24,8 @@ class UsersController {
     const { name, email, password, oldPassword } = request.body
     const user_id = request.user.id
 
+    console.log(oldPassword)
+
     const database = await sqliteConnection()
 
     const user = await database.get('SELECT * FROM users WHERE id = (?)', [user_id])
